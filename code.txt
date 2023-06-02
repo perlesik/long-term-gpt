@@ -1,0 +1,61 @@
+// ------------------------------------------------------ //
+class TaskManager:
+    def __init__(self: 'TaskManager'):
+        self.tasks = []
+// ------------------------------------------------------ //// ------------------------------------------------------ //
+from datetime import datetime
+
+class TaskManager:
+    def __init__(self):
+        self.task_list = []
+
+    def add_task(self, task_name: str, deadline: datetime):
+        self.task_list.append((task_name, deadline))
+// ------------------------------------------------------ //// ------------------------------------------------------ //
+class TaskManager:
+    def __init__(self):
+        self.task_list = []
+
+    def remove_task(self, task_name):
+        for task in self.task_list:
+            if task.name == task_name:
+                self.task_list.remove(task)
+                return True
+        return False
+// ------------------------------------------------------ //// ------------------------------------------------------ //
+class TaskManager:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task_name, deadline):
+        self.tasks.append({'task_name': task_name, 'deadline': deadline})
+
+    def remove_task(self, task_name):
+        for task in self.tasks:
+            if task['task_name'] == task_name:
+                self.tasks.remove(task)
+
+    def get_tasks(self):
+        return [task['task_name'] for task in self.tasks]
+// ------------------------------------------------------ //// ------------------------------------------------------ //
+from datetime import datetime
+
+class TaskManager:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task_name, deadline):
+        self.tasks.append({'task_name': task_name, 'deadline': deadline})
+
+    def remove_task(self, task_name):
+        self.tasks = [task for task in self.tasks if task['task_name'] != task_name]
+
+    def get_tasks(self):
+        return self.tasks
+
+    def get_upcoming_tasks(self):
+        today = datetime.now().date()
+        upcoming_tasks = [task for task in self.tasks if task['deadline'].date() > today]
+        upcoming_tasks.sort(key=lambda x: x['deadline'])
+        return upcoming_tasks
+// ------------------------------------------------------ //
